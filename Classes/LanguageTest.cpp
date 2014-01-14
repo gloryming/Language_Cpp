@@ -9,8 +9,9 @@
 #include "LanguageTest.h"
 USING_NS_CC;
 
-#define   N      1000000
-#define   MAT4   100000
+#define   N_Loop 1000
+#define   N_Call 1000000
+#define   N_MAT4 100000
 
 int addFunc(int a, int b)
 {
@@ -35,7 +36,7 @@ void multiplayMatrix(int a[][4], int b[][4], int* &c)
     }
 }
 
-long getCurrentTime()
+unsigned long long getCurrentTime()
 {
     struct timeval tv;
     gettimeofday(&tv,NULL);
@@ -75,33 +76,34 @@ void LanguageTest::loopCallback(Object* pSender)
 {
     int i = 0;
     
-    long start = getCurrentTime();
+    unsigned long start = getCurrentTime();
     
-    while (i < N) {
+    while (i < N_Loop) {
         i++;
+        CCLOG("Count: %d", i);
     }
     
-    long end = getCurrentTime();
-    long duration = end - start;
+    unsigned long end = getCurrentTime();
+    unsigned long duration = end - start;
     
-    CCLOG("Loop:start = %ld, end = %ld, duration = %ld", start, end, duration);
+    CCLOG("Loop:start = %lu, end = %lu, duration = %lu", start, end, duration);
 }
 
 void LanguageTest::callfuncCallback(Object* pSender)
 {
     int sum = 0, i = 0;
     
-    long start = getCurrentTime();
+    unsigned long start = getCurrentTime();
     
-    while (i < N) {
+    while (i < N_Call) {
         sum += addFunc(i, 1);
         i++;
     }
     
-    long end = getCurrentTime();
-    long duration = end - start;
+    unsigned long end = getCurrentTime();
+    unsigned long duration = end - start;
     
-    CCLOG("CallFunc:start = %ld, end = %ld, duration = %ld", start, end, duration);
+    CCLOG("CallFunc:start = %lu, end = %lu, duration = %lu", start, end, duration);
 }
 
 void LanguageTest::mat4Callback(Object* pSender)
@@ -111,9 +113,9 @@ void LanguageTest::mat4Callback(Object* pSender)
     int a[4][4] = {{1, 2, 3, 4}, {2, 3, 4, 5}, {3, 4, 5, 6}, {4, 5, 6, 7}};
     int b[4][4] = {{5, 6, 7, 8}, {6, 7, 8, 9}, {7, 8, 9, 10}, {8, 9, 10, 11}};
     
-    long start = getCurrentTime();
+    unsigned long start = getCurrentTime();
     
-    while (i < MAT4) {
+    while (i < N_MAT4) {
         multiplayMatrix(a, b, c);
         i++;
     }
@@ -122,10 +124,10 @@ void LanguageTest::mat4Callback(Object* pSender)
 //            CCLOG("c[%d][%d] = %d", i, j, c[i * 4 + j]);
 //        }
 //    }
-    long end = getCurrentTime();
-    long duration = end - start;
+    unsigned long end = getCurrentTime();
+    unsigned long duration = end - start;
     
-    CCLOG("MAT4:start = %ld, end = %ld, duration = %ld", start, end, duration);
+    CCLOG("MAT4:start = %lu, end = %lu, duration = %lu", start, end, duration);
     
     delete[] c;
 }
