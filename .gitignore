@@ -1,4 +1,4 @@
-../.DS_Store
-../../Language_Cpp.xcodeproj/project.xcworkspace
-../../Language_Cpp.xcodeproj/xcuserdata
-../cocos2d/tools
+.DS_Store
+./proj.ios_mac/Language_Cpp.xcodeproj/project.xcworkspace
+./proj.ios_mac/Language_Cpp.xcodeproj/xcuserdata
+./cocos2d/tools
