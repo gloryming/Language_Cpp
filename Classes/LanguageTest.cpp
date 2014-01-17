@@ -36,7 +36,7 @@ void multiplayMatrix(int a[][4], int b[][4], int* &c)
     }
 }
 
-unsigned long long getCurrentTime()
+unsigned long getCurrentTime()
 {
     struct timeval tv;
     gettimeofday(&tv,NULL);
@@ -119,11 +119,11 @@ void LanguageTest::mat4Callback(Object* pSender)
         multiplayMatrix(a, b, c);
         i++;
     }
-//    for (int i = 0; i < 4; ++i) {
-//        for (int j = 0; j < 4; ++j) {
-//            CCLOG("c[%d][%d] = %d", i, j, c[i * 4 + j]);
-//        }
-//    }
+    for (int i = 0; i < 4; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            CCLOG("c[%d][%d] = %d", i, j, c[i * 4 + j]);
+        }
+    }
     unsigned long end = getCurrentTime();
     unsigned long duration = end - start;
     
